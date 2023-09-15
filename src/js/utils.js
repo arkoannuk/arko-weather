@@ -32,5 +32,6 @@ export function parseWeatherData(rawData) {
     }
   })
 
-  console.log(rawData)
+  const parsedData = rawData
+  return parsedData
 }

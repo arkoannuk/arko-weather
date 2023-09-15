@@ -8,7 +8,14 @@
   <body>
     <div class="container py-4 px-3 mx-auto">
       <h1>Hello, Bootstrap and Vite!</h1>
-      <button class="btn btn-primary">Primary button</button>
+    
+      <form id="weatherLocation">
+        <div class="form-group mt-2">
+          <label for="weatherLocation">Enter Location</label>
+          <input type="text" class="form-control" id="locationInput" aria-describedby="emailHelp" placeholder="Tartu, Estonia">
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Show Data</button>
+      </form>
     </div>
     <script type="module" src="./js/main.js"></script>
   </body>
