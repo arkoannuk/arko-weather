@@ -1,4 +1,8 @@
 export function parseWeatherData(rawData) {
+  // const forecastKeys = {
+
+  // }
+
   const currentKeys = [
     "cloud",
     "condition.code",
@@ -16,6 +20,8 @@ export function parseWeatherData(rawData) {
     "wind_degree",
     "wind_dir",
     "wind_mph",
+    "gust_mph",
+    "gust_kph",
   ]
 
   const locationKeys = ["lat", "localtime_epoch", "lon", "tz_id"]

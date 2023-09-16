@@ -1,4 +1,5 @@
 import { fetchCurrentWeather } from "./api"
+import { displayCurrent, displayForecast } from "./dom"
 import { parseWeatherData } from "./utils"
 
 document
@@ -7,7 +8,10 @@ document
     event.preventDefault()
     const location = document.getElementById("locationInput").value
     try {
-      console.log(parseWeatherData(await fetchCurrentWeather(location)))
+      const weatherData = parseWeatherData(await fetchCurrentWeather(location))
+      console.log(weatherData)
+      displayCurrent(weatherData)
+      displayForecast(weatherData)
     } catch (error) {
       console.error(error)
     }

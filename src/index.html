@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bootstrap w/ Vite</title>
+    <link rel="import" href="./html/templates.html">
   </head>
-  <body>
+  <bodyw>
     <div class="container py-4 px-3 mx-auto">
       <h1>Hello, Bootstrap and Vite!</h1>
     
@@ -16,7 +17,54 @@
         </div>
         <button type="submit" class="btn btn-primary mt-2">Show Data</button>
       </form>
+
+
+      <div class="row" id="currentWeather">
+          <!-- Template -->
+      </div>
+      <div class="row" id="forecastWeather">
+          <!-- Template -->
+      </div>
+
+
     </div>
     <script type="module" src="./js/main.js"></script>
   </body>
+
+  <template id="currentTemplate">
+    <div data-index="" class="currentCard card m-1 mt-2" style="width: 16rem;">
+      <div class="card-body">
+        <li class="conditionText"></li>
+        <li class="feelslike_c"></li>
+        <li class="humidity"></li>
+        <li class="precip_mm"></li>
+        <li class="temp_c"></li>
+        <li class="uv"></li>
+        <li class="wind_kph"></li>
+      </div>
+    </div>
+  </template>
+
+
+  <template id="forecastTemplate">
+    <div data-index="" class="forecastCard card m-1 mt-2" style="width: 16rem;">
+      <div class="card-body">
+        <li class="day0 conditionText"></li>
+        <li class="day0 maxTemp_c"></li>
+        <li class="day0 avgTemp_c"></li>
+        <li class="day0 minTemp_c"></li>
+
+        <li class="day1 conditionText"></li>
+        <li class="day1 maxTemp_c"></li>
+        <li class="day1 avgTemp_c"></li>
+        <li class="day1 minTemp_c"></li>
+
+        <li class="day2 conditionText"></li>
+        <li class="day2 maxTemp_c"></li>
+        <li class="day2 avgTemp_c"></li>
+        <li class="day2 minTemp_c"></li>
+      </div>
+    </div>
+  </template>
+
 </html>
