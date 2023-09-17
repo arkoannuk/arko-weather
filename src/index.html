@@ -4,35 +4,137 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bootstrap w/ Vite</title>
-    <link rel="import" href="./html/templates.html">
+    <link rel="import" href="./html/templates.html" />
   </head>
-  <bodyw>
-    <div class="container py-4 px-3 mx-auto">
-      <h1>Hello, Bootstrap and Vite!</h1>
-    
-      <form id="weatherLocation">
-        <div class="form-group mt-2">
-          <label for="weatherLocation">Enter Location</label>
-          <input type="text" class="form-control" id="locationInput" aria-describedby="emailHelp" placeholder="Tartu, Estonia">
+
+  <body>
+    <div class="container py-4 px-3">
+      <div class="row d-flex justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+          <h1 class="text-center">Weather Lookup</h1>
+          <div class="card mt-3">
+            <div class="card-body pt-2">
+              <form id="weatherLocation">
+                <div class="form-group mt-2">
+                  <label for="weatherLocation">Enter Location</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="locationInput"
+                    aria-describedby="emailHelp"
+                    placeholder="Tartu, Estonia"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary mt-2 w-100">
+                  Show
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <h2 class="text-center mt-4 muted text-secondary">Today</h2>
+          <div class="card">
+            <div class="card-header d-flex">
+              <div class="col-6">
+                <h3 class="card-title m-0 text-nowrap">Tartu</h3>
+                <p class="card-text m-0">Estonia</p>
+              </div>
+              <div class="col-6 text-end">
+                <h3 class="card-text m-0">26.5C</h3>
+                <p class="card-text m-0">Sunny</p>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="row d-flex m-0 p-0">
+                <div class="col-6 m-0 p-0">
+                  <div
+                    class="px-3 py-2 border-1 border-secondary-subtle border-end border-bottom text-nowrap"
+                  >
+                    Rain Chance 70%
+                  </div>
+                </div>
+                <div class="col-6 m-0 p-0">
+                  <div
+                    class="text-end px-3 py-2 border-1 border-secondary-subtle border-bottom"
+                  >
+                    Max 31.0C
+                  </div>
+                </div>
+                <div class="col-6 m-0 p-0">
+                  <div
+                    class="px-3 py-2 border-1 border-secondary-subtle border-end border-bottom"
+                  >
+                    Humidity 50%
+                  </div>
+                </div>
+                <div class="col-6 m-0 p-0">
+                  <div
+                    class="text-end px-3 py-2 border-1 border-secondary-subtle border-bottom"
+                  >
+                    Avg 28.5C
+                  </div>
+                </div>
+                <div class="col-6 m-0 p-0">
+                  <div
+                    class="px-3 py-2 border-1 border-secondary-subtle border-end"
+                  >
+                    Wind 3.6kph
+                  </div>
+                </div>
+                <div class="col-6 m-0 p-0">
+                  <div class="text-end px-3 py-2">Low 26.5C</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer text-body-secondary text-center">
+              Time 16:15 (Mon)
+            </div>
+          </div>
+
+          <h2 class="text-center mt-4 muted text-secondary">Forecast</h2>
+          <div class="d-flex justify-content-between">
+            <div class="col-6 pe-1">
+              <div class="card">
+                <div class="card-header text-center m-0 p-0">
+                  <h5 class="pt-2">18.08.23 (Tue)</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Rainy</li>
+                  <li class="list-group-item">Max 31.5C</li>
+                  <li class="list-group-item">Avg 30.0C</li>
+                  <li class="list-group-item">Min 29.0</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-6 ps-1">
+              <div class="card">
+                <div class="card-header text-center m-0 p-0">
+                  <h5 class="pt-2">19.08.23 (Wed)</h5>
+                </div>
+                <ul class="list-group list-group-flush text-end">
+                  <li class="list-group-item">Rainy</li>
+                  <li class="list-group-item">Max 31.5C</li>
+                  <li class="list-group-item">Avg 30.0C</li>
+                  <li class="list-group-item">Min 29.0</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div id="currentWeather">
+            <!-- Template -->
+          </div>
+          <div id="forecastWeather">
+            <!-- Template -->
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-2">Show Data</button>
-      </form>
-
-
-      <div class="row" id="currentWeather">
-          <!-- Template -->
       </div>
-      <div class="row" id="forecastWeather">
-          <!-- Template -->
-      </div>
-
-
     </div>
     <script type="module" src="./js/main.js"></script>
   </body>
 
   <template id="currentTemplate">
-    <div data-index="" class="currentCard card m-1 mt-2" style="width: 16rem;">
+    <div data-index="" class="currentCard card m-1 mt-2" style="width: 16rem">
       <div class="card-body">
         <li class="conditionText"></li>
         <li class="feelslike_c"></li>
@@ -45,20 +147,17 @@
     </div>
   </template>
 
-
   <template id="forecastTemplate">
-    <div data-index="" class="forecastCard card m-1 mt-2" style="width: 16rem;">
+    <div data-index="" class="forecastCard card m-1 mt-2" style="width: 16rem">
       <div class="card-body">
         <li class="day0 conditionText"></li>
         <li class="day0 maxTemp_c"></li>
         <li class="day0 avgTemp_c"></li>
         <li class="day0 minTemp_c"></li>
-
         <li class="day1 conditionText"></li>
         <li class="day1 maxTemp_c"></li>
         <li class="day1 avgTemp_c"></li>
         <li class="day1 minTemp_c"></li>
-
         <li class="day2 conditionText"></li>
         <li class="day2 maxTemp_c"></li>
         <li class="day2 avgTemp_c"></li>
@@ -66,5 +165,4 @@
       </div>
     </div>
   </template>
-
 </html>
