@@ -1,6 +1,24 @@
-import { fetchCurrentWeather } from "./api"
+import { fetchCurrentWeather, fetchUserCity } from "./api"
 import { displayCurrent, displayForecast } from "./dom"
 import { parseWeatherData } from "./utils"
+
+document.addEventListener("DOMContentLoaded", async () => {
+  let location
+  try {
+    location = await fetchUserCity()
+  } catch (error) {
+    console.error(error)
+    return
+  }
+
+  try {
+    const weatherData = parseWeatherData(await fetchCurrentWeather(location))
+    displayCurrent(weatherData)
+    displayForecast(weatherData)
+  } catch (error) {
+    console.error(error)
+  }
+})
 
 document
   .getElementById("weatherLocation")
@@ -9,7 +27,6 @@ document
     const location = document.getElementById("locationInput").value
     try {
       const weatherData = parseWeatherData(await fetchCurrentWeather(location))
-      console.log(weatherData)
       displayCurrent(weatherData)
       displayForecast(weatherData)
     } catch (error) {
