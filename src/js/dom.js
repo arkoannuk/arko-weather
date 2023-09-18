@@ -57,16 +57,18 @@ export function displayForecast(weatherData) {
   const forecastCard = forecastTemplate.querySelector(".forecastCard")
 
   for (let day = 1; day < weatherData.forecast.forecastday.length; day++) {
+    const date = forecastCard.querySelector(`.day${day}.date`)
     const conditionText = forecastCard.querySelector(`.day${day}.conditionText`)
     const maxTemp_c = forecastCard.querySelector(`.day${day}.maxTemp_c`)
     const avgTemp_c = forecastCard.querySelector(`.day${day}.avgTemp_c`)
     const minTemp_c = forecastCard.querySelector(`.day${day}.minTemp_c`)
 
+    date.textContent = weatherData.forecast.forecastday[day].date
     conditionText.textContent =
       weatherData.forecast.forecastday[day].day.condition.text
-    maxTemp_c.textContent = weatherData.forecast.forecastday[day].day.maxtemp_c
-    avgTemp_c.textContent = weatherData.forecast.forecastday[day].day.avgtemp_c
-    minTemp_c.textContent = weatherData.forecast.forecastday[day].day.mintemp_c
+    maxTemp_c.textContent = `Max: ${weatherData.forecast.forecastday[day].day.maxtemp_c}C`
+    avgTemp_c.textContent = `Avg: ${weatherData.forecast.forecastday[day].day.avgtemp_c}C`
+    minTemp_c.textContent = `Min: ${weatherData.forecast.forecastday[day].day.mintemp_c}C`
   }
 
   document.getElementById("forecastWeather").appendChild(forecastTemplate)

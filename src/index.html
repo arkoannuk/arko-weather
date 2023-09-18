@@ -36,35 +36,6 @@
             <!-- Template -->
           </div>
 
-          <h2 class="text-center mt-4 muted text-secondary">Forecast</h2>
-          <div class="d-flex justify-content-between">
-            <div class="col-6 pe-1">
-              <div class="card">
-                <div class="card-header text-center m-0 p-0">
-                  <h5 class="pt-2">18.08.23 (Tue)</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Rainy</li>
-                  <li class="list-group-item">Max 31.5C</li>
-                  <li class="list-group-item">Avg 30.0C</li>
-                  <li class="list-group-item">Min 29.0</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-6 ps-1">
-              <div class="card">
-                <div class="card-header text-center m-0 p-0">
-                  <h5 class="pt-2">19.08.23 (Wed)</h5>
-                </div>
-                <ul class="list-group list-group-flush text-end">
-                  <li class="list-group-item">Rainy</li>
-                  <li class="list-group-item">Max 31.5C</li>
-                  <li class="list-group-item">Avg 30.0C</li>
-                  <li class="list-group-item">Min 29.0</li>
-                </ul>
-              </div>
-            </div>
-          </div>
           <div id="forecastWeather">
             <!-- Template -->
           </div>
@@ -128,16 +99,35 @@
   </template>
 
   <template id="forecastTemplate">
-    <div data-index="" class="forecastCard card m-1 mt-2" style="width: 16rem">
-      <div class="card-body">
-        <li class="day1 conditionText"></li>
-        <li class="day1 maxTemp_c"></li>
-        <li class="day1 avgTemp_c"></li>
-        <li class="day1 minTemp_c"></li>
-        <li class="day2 conditionText"></li>
-        <li class="day2 maxTemp_c"></li>
-        <li class="day2 avgTemp_c"></li>
-        <li class="day2 minTemp_c"></li>
+    <div class="forecastCard">
+      <h2 class="text-center mt-4 muted text-secondary">Forecast</h2>
+      <div class="d-flex justify-content-between">
+        <div class="col-6 pe-1">
+          <div class="card">
+            <div class="card-header text-center m-0 p-0">
+              <h5 class="day1 date pt-2"></h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="day1 conditionText list-group-item"></li>
+              <li class="day1 maxTemp_c list-group-item"></li>
+              <li class="day1 avgTemp_c list-group-item"></li>
+              <li class="day1 minTemp_c list-group-item"></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-6 ps-1">
+          <div class="card">
+            <div class="card-header text-center m-0 p-0">
+              <h5 class="day2 date pt-2"></h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="day2 conditionText list-group-item">Rainy</li>
+              <li class="day2 maxTemp_c list-group-item"></li>
+              <li class="day2 avgTemp_c list-group-item"></li>
+              <li class="day2 minTemp_c list-group-item"></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </template>
