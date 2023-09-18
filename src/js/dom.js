@@ -7,22 +7,34 @@ export function displayCurrent(weatherData) {
     .content.cloneNode(true)
 
   const currentCard = currentTemplate.querySelector(".currentCard")
-  const conditionText = currentCard.querySelector(".conditionText")
-  const feelslike_c = currentCard.querySelector(".feelslike_c")
-  const humidity = currentCard.querySelector(".humidity")
-  const precip_mm = currentCard.querySelector(".precip_mm")
-  const temp_c = currentCard.querySelector(".temp_c")
-  const uv = currentCard.querySelector(".uv")
-  const wind_kph = currentCard.querySelector(".wind_kph")
+  const locationName = currentTemplate.querySelector(".locationName")
+  const locationCountry = currentTemplate.querySelector(".locationCountry")
+  const locationTime = currentTemplate.querySelector(".locationTime")
+
+  const conditionText = currentTemplate.querySelector(".conditionText")
+  const humidity = currentTemplate.querySelector(".humidity")
+  const temp_c = currentTemplate.querySelector(".temp_c")
+  const wind_kph = currentTemplate.querySelector(".wind_kph")
+
+  const maxTemp_c = currentTemplate.querySelector(`.day0.maxTemp_c`)
+  const avgTemp_c = currentTemplate.querySelector(`.day0.avgTemp_c`)
+  const minTemp_c = currentTemplate.querySelector(`.day0.minTemp_c`)
+  const rainChance = currentTemplate.querySelector(`.rainChance`)
 
   currentCard.dataset.index = "0"
-  conditionText.textContent = weatherData.current.condition.text
-  feelslike_c.textContent = `${weatherData.current.feelslike_c} C`
-  humidity.textContent = `${weatherData.current.humidity} Humidity`
-  precip_mm.textContent = `${weatherData.current.precip_mm} mm`
+  locationName.textContent = weatherData.location.name
+  locationCountry.textContent = weatherData.location.country
+  locationTime.textContent = weatherData.location.localtime
+
   temp_c.textContent = `${weatherData.current.temp_c} C`
-  uv.textContent = `${weatherData.current.uv} UV`
-  wind_kph.textContent = `${weatherData.current.wind_kph} kph`
+  conditionText.textContent = weatherData.current.condition.text
+  humidity.textContent = `Humidity: ${weatherData.current.humidity}%`
+  wind_kph.textContent = `Wind: ${weatherData.current.wind_kph} kp/h`
+
+  maxTemp_c.textContent = `Max: ${weatherData.forecast.forecastday[0].day.maxtemp_c}C`
+  avgTemp_c.textContent = `Avg: ${weatherData.forecast.forecastday[0].day.avgtemp_c}C`
+  minTemp_c.textContent = `Min: ${weatherData.forecast.forecastday[0].day.mintemp_c}C`
+  rainChance.textContent = `Rain Chance: ${weatherData.forecast.forecastday[0].day.daily_chance_of_rain}%`
 
   if (existingNode) {
     existingNode.remove()
@@ -33,6 +45,7 @@ export function displayCurrent(weatherData) {
 
 export function displayForecast(weatherData) {
   const existingNode = document.querySelector(".forecastCard")
+
   if (existingNode) {
     existingNode.remove()
   }
@@ -43,7 +56,7 @@ export function displayForecast(weatherData) {
 
   const forecastCard = forecastTemplate.querySelector(".forecastCard")
 
-  for (let day = 0; day < weatherData.forecast.forecastday.length; day++) {
+  for (let day = 1; day < weatherData.forecast.forecastday.length; day++) {
     const conditionText = forecastCard.querySelector(`.day${day}.conditionText`)
     const maxTemp_c = forecastCard.querySelector(`.day${day}.maxTemp_c`)
     const avgTemp_c = forecastCard.querySelector(`.day${day}.avgTemp_c`)
