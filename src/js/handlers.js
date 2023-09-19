@@ -1,11 +1,11 @@
-import { fetchCurrentWeather, fetchUserCity } from "./api"
+import { fetchCurrentWeather, fetchUserLocation } from "./api"
 import { displayCurrent, displayForecast } from "./dom"
 import { parseWeatherData } from "./utils"
 
 document.addEventListener("DOMContentLoaded", async () => {
   let location
   try {
-    location = await fetchUserCity()
+    location = await fetchUserLocation()
   } catch (error) {
     console.error(error)
     return

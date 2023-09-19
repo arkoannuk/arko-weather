@@ -21,7 +21,7 @@ export async function fetchCurrentWeather(location) {
   }
 }
 
-export async function fetchUserCity() {
+export async function fetchUserLocation() {
   try {
     const response = await fetch(
       `https://api.geoapify.com/v1/ipinfo?&apiKey=${apiKeyGeo}`
@@ -35,8 +35,8 @@ export async function fetchUserCity() {
     }
 
     const userIpData = await response.json()
-    const userCity = userIpData.city.name
-    return userCity
+    const userLocation = `${userIpData.city.name}, ${userIpData.country.name}`
+    return userLocation
   } catch (error) {
     console.log(error)
     return "New York"
